@@ -144,6 +144,13 @@ class Wannier90Converter(ConverterTools):
             input_params = read_input_file(self.inp_file, self.fortran_to_replace)
         (kmesh_mode, kmesh_size, density_required, n_corr_shells,
          corr_shells, n_shells, shells, fermi_energy) = mpi.bcast(input_params)
+        mpi.report(" Extracted:")
+        mpi.report(" - kmesh_mode, kmesh_size: %s, %s" % (str(kmesh_mode), str(kmesh_size)))
+        mpi.report(" - density: %s" % str(density_required))
+        mpi.report(" - n_corr_shells: %s" % str(n_corr_shells))
+        mpi.report(" - corr_shells, n_shells, shells: %s, %s, %s" % (str(corr_shells), str(n_shells), str(shells)))
+        mpi.report(" - fermi_energy: %s" % str(fermi_energy))
+        mpi.report()
         if density_required is None and not self.bloch_basis:
             raise ValueError('Required density necessary if not in bloch basis')
 

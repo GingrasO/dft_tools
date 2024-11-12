@@ -2387,8 +2387,8 @@ class SumkDFT(object):
                 ib2 = band_window[0][ik, 1]
                 for inu in range(self.n_orbitals[ik, 0]):
                     for imu in range(self.n_orbitals[ik, 0]):
-                        valre = (deltaN['up'][ik][inu, imu].real + deltaN['down'][ik][inu, imu].real)
-                        valim = (deltaN['up'][ik][inu, imu].imag + deltaN['down'][ik][inu, imu].imag)
+                        valre = (deltaN['up'][ik][inu, imu].real + deltaN['down'][ik][inu, imu].real) / 2.0
+                        valim = (deltaN['up'][ik][inu, imu].imag + deltaN['down'][ik][inu, imu].imag) / 2.0
                         # write into delta_N
                         delta_N[ik, inu, imu] = valre + 1j*valim
             if mpi.is_master_node():

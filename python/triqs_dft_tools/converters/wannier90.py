@@ -346,7 +346,6 @@ class Wannier90Converter(ConverterTools):
                     archive[self.misc_subgrp]['band_window'] = band_window+1 # Change to 1-based index
                     archive[self.misc_subgrp]['kpts_cart'] = np.dot(kpts, kpt_basis.T)
         mpi.barrier()
-        mpi.report("Saving done.\n")
 
         # Makes Fermi energy a class variable for testing
         self.fermi_energy = fermi_energy
